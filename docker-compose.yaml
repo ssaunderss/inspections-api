@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14.1
+    restart: always
+    environment:
+      - POSTGRES_USER=service-account
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=inspections
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    expose:
+      - 9876
+    ports:
+      - 9876:5432
